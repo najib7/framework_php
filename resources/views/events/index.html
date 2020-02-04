@@ -1,0 +1,29 @@
+{% extends 'layouts/master.html' %}
+
+{% block title %}events{% endblock %}
+
+{% block content %}
+
+<h1 class="d-inline-block">{{ events|length }} : Events</h1>
+<a href="{{ route('events.create') }}" class="btn btn-primary float-right">Create</a>
+
+<div class="row">
+    {% for event in events %}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-header">
+                {{ event.name }}
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ event.location }}</li>
+                    <li class="list-group-item">{{ event.price }}</li>
+                    <li class="list-group-item">{{ event.date|date('Y-m-d') }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
